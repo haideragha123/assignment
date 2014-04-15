@@ -61,7 +61,7 @@ load('ex3weights.mat');
 %  you compute the training set accuracy.
 
 pred = predict(Theta1, Theta2, X);
-
+hold off;
 fprintf('\nTraining Set Accuracy: %f\n', mean(double(pred == y)) * 100);
 
 fprintf('Program paused. Press enter to continue.\n');
@@ -74,14 +74,15 @@ pause;
 rp = randperm(m);
 
 for i = 1:m
-    % Display 
+    %Display 
     fprintf('\nDisplaying Example Image\n');
     displayData(X(rp(i), :));
 
     pred = predict(Theta1, Theta2, X(rp(i),:));
+	%fprintf('\nTraining Set Accuracy: %f\n', mean(double(pred == y)) * 100);
     fprintf('\nNeural Network Prediction: %d (digit %d)\n', pred, mod(pred, 10));
     
-    % Pause
+    %Pause
     fprintf('Program paused. Press enter to continue.\n');
     pause;
 end
